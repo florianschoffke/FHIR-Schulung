@@ -71,12 +71,7 @@ dependencies:
 # │ input/includes. To use a provided input/includes/menu.xml file, delete the "menu"              │
 # │ property below.                                                                                │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-menu:
-  Home: index.html
-  Artifacts: artifacts.html
-  MyContent:
-    GeneralInfo: misc.html
-    MoreInfo: misc2.html
+
     
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
@@ -185,7 +180,7 @@ menu:
 # If set to true, no IG related content will be generated.
 # The default value for this property is false.
 #
-# FSHOnly: false
+FSHOnly: true
 #
 #
 # When set to true, the "short" and "definition" field on the root element of an Extension will
