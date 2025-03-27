@@ -10,5 +10,6 @@ Context: ServiceRequest
   * coding 1..1 MS
   * coding from $icd-10
     * system 1..1 MS
+    * system = $icd-10 (exactly)
     * code 1..1 MS
     * display 1..1 MS
