@@ -1,6 +1,6 @@
-Logical: TransferralPractitionerLogical
+Logical: ReferralPractitionerLogical
 Parent: Element
-Id: transferral-practitioner-logical
+Id: Referral-practitioner-logical
 Title: "Datenmodell des Arztes"
 Description: "Fachliches Datenmodell eines Patienten für die Schnittstelle"
 * Name 1..1 HumannameDeBasis "Angaben zum Namen"

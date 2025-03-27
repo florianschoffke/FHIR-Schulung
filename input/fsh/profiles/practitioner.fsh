@@ -1,6 +1,6 @@
-Profile: TransferralPractitioner
+Profile: ReferralPractitioner
 Parent: Practitioner
-Description: "Practitioner of transferral"
+Description: "Practitioner of Referral"
 * name 1..1 MS
 * name only HumannameDeBasis
   * ^short = "Angaben zum Namen"

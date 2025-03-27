@@ -1,7 +1,7 @@
-Logical: TransferralDataModelLogical
+Logical: ReferralDataModelLogical
 Parent: Element
-Id: TransferralDataModel-Logical
-Title: "Transferral Data Model-Logical"
+Id: ReferralDataModel-Logical
+Title: "Referral Data Model-Logical"
 * UeberweisungsGrund 1..1 BackboneElement "Angabe des Überweisungsgrundes"
   * TextuelleAngabe 1..1 string "Textuelle Angabe des Überweisungsgrundes"
   * Code 1..1 code "Code des Überweisungsgrundes" 

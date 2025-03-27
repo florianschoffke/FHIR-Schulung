@@ -1,6 +1,6 @@
-Profile: TransferralPatient
+Profile: ReferralPatient
 Parent: Patient
-Description: "Patient for transferral"
+Description: "Patient for Referral"
 * obeys pat-address-1
 * name 1..1 MS
 * name only HumannameDeBasis
