@@ -24,6 +24,7 @@ Description: "Patient for Referral"
   * ^definition = "Die Angaben zur Adresse des Patienten sind optional. Es ist mindestens eine der Angaben Postleitzahl oder Stadt zu machen."
   * line 1..3 MS
     * extension 2..* MS
+    // Fragen ob Extension hier notwendig ist
     * extension[Strasse] 1..1 MS
     * extension[Hausnummer] 1..1 MS
   * city MS

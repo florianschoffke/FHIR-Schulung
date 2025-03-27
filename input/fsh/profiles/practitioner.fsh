@@ -19,7 +19,7 @@ Description: "Practitioner of Referral"
   * ^slicing.description = "Slicing for identifier"
   * ^slicing.ordered = false
   
-* identifier contains lanr 1..1 MS and telematikId 1..1 MS
+* identifier contains lanr 1..1 MS and telematikId 0..1 MS
 
 * identifier[lanr] only IdentifierLanr
 * identifier[telematikId] only IdentifierTelematikId

@@ -38,9 +38,14 @@ Description: "Contains the Referral information"
 * code 1..1 MS
 * code = $sct#3457005 "Referral procedure" (exactly)
 
+* subject MS
+
 * authoredOn 1..1 MS
 // Datentyp dateTime anschauen
 * authoredOn obeys sr-authored-on-1
+
+* requester 1..1 MS
+* requester only Reference(ReferralPractitioner)
 
 * reasonCode 1..1 MS
   * text 1..1 MS
