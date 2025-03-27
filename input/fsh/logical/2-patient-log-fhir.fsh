@@ -16,7 +16,7 @@ Description: "Fachliches Datenmodell eines Patienten auf FHIR Ressourcen"
     * Strasse 1..1 string "Angabe der Straße"
     * Hausnummer 1..1 integer "Angabe der Hausnummer"
     * Postleitzahl 0..1 integer "Angabe einer Deutschen Postleitzahl"
-    * Stadt 1..1 string "Angabe der Stadt"
+    * Stadt 0..1 string "Angabe der Stadt"
     * Bundesland 1..1 string "Angabe Bundesland"
 
 * AngabenUeberweisung 1..1 ServiceRequest "Angaben zur Überweisung"
@@ -30,7 +30,7 @@ Description: "Fachliches Datenmodell eines Patienten auf FHIR Ressourcen"
 * AngabenArzt 1..1 Practitioner "FHIR Ressource Practitioner" //FHIR Ressource
   * Name 1..1 HumannameDeBasis "Angaben zum Namen" //Basisprofil
     * Nachname 1..1 string "Genau ein Nachname ist anzugeben"
-    * Vorname 1..* string "Es ist mindestens ein Vorname anzugeben"
+    * Vorname 0..* string "Vorname kann angegeben werden"
   * ArztLANR 1..1 string "Angabe der LANR"
   * ArztTelematikID 1..1 string "Angabe der Telematik-ID"
   * ArztTelefon 1..1 string "Angabe der Telefonnummer des Arztes"

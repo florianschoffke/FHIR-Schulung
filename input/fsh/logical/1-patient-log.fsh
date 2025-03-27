@@ -14,10 +14,11 @@ Description: "Fachliches Datenmodell eines Patienten für die Schnittstelle"
 * Geburtsdatum 1..1 date "Angabe eines Geburtstags"
 * Geschlecht 1..1 code "Angabe des Geschlechts"
 * Adresse 0..1 AddressDeBasis "Adressangaben sind optional" //Basisprofil
+  * obeys log-pat-adress-1
   * Strasse 1..1 string "Angabe der Straße"
   * Hausnummer 1..1 integer "Angabe der Hausnummer"
   * Postleitzahl 0..1 integer "Angabe einer Deutschen Postleitzahl"
-  * Stadt 1..1 string "Angabe der Stadt"
+  * Stadt 0..1 string "Angabe der Stadt"
   * Bundesland 1..1 string "Angabe Bundesland"
 * AngabenUeberweisung 1..1 BackboneElement "Angaben zur Überweisung"
   * UeberweisungsDatum 1..1 date "Angabe des Überweisungsdatums"
@@ -33,3 +34,8 @@ Description: "Fachliches Datenmodell eines Patienten für die Schnittstelle"
   * ArztLANR 1..1 string "Angabe der LANR"
   * ArztTelematikID 1..1 string "Angabe der Telematik-ID"
   * ArztTelefon 1..1 string "Angabe der Telefonnummer des Arztes"
+
+Invariant: log-pat-adress-1
+Description: "Postleitzahl oder Stadt muss angegeben werden"
+Expression: "exists(Postleitzahl) or exists(Stadt)"
+Severity: #error
