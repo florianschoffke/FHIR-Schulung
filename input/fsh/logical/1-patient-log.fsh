@@ -12,8 +12,9 @@ Description: "Fachliches Datenmodell eines Patienten für die Schnittstelle"
   * Nachname 1..1 string "Genau ein Nachname ist anzugeben"
   * Vorname 1..* string "Es ist mindestens ein Vorname anzugeben"
 * Geburtsdatum 1..1 date "Angabe eines Geburtstags"
+  * ^comment = "Taggenauer Geburtstag. 00.00.1980 soll nicht unterstützt werden"
 * Geschlecht 1..1 code "Angabe des Geschlechts"
-* Adresse 0..1 AddressDeBasis "Adressangaben sind optional" //Basisprofil
+* Adresse 0..1 BackboneElement "Adressangaben sind optional" //Basisprofil
   * obeys log-pat-adress-1
   * Strasse 1..1 string "Angabe der Straße"
   * Hausnummer 1..1 integer "Angabe der Hausnummer"

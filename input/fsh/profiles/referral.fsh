@@ -8,6 +8,24 @@ Description: "Contains the Referral information"
 * extension 1..* MS
 * extension contains ReferralICD10EX named referral-icd10 1..* MS
 
+// Überweisungsgrund
+* reasonCode 1..1 MS
+  * coding 1..1
+  * coding from ReferralReasonVS (required)
+
+
+
+
+
+
+/*
+* reasonCode 1..1 MS
+  * text 1..1 MS
+  * coding 1..1 MS
+  // Error zeigen: * coding from ReferralReasonCS
+  * coding from ReferralReasonVS
+*/
+
 // Busienss Identifier
 * identifier 1..* MS
   * ^slicing.discriminator.type = #value
@@ -47,11 +65,7 @@ Description: "Contains the Referral information"
 * requester 1..1 MS
 * requester only Reference(ReferralPractitioner)
 
-* reasonCode 1..1 MS
-  * text 1..1 MS
-  * coding 1..1 MS
-  // Error zeigen: * coding from ReferralReasonCS
-  * coding from ReferralReasonVS
+
 
 // Fachmodell Rückspiegelung -> soll aufgenommen werden?
 * note MS

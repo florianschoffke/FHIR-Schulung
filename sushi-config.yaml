@@ -19,6 +19,7 @@ fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 dependencies:
   hl7.fhir.r4.core: 4.0.1
   de.basisprofil.r4: 1.5.2
+
 #
 #
 # The pages property corresponds to IG.definition.page. SUSHI can

@@ -8,8 +8,8 @@ Context: ServiceRequest
 * valueCodeableConcept
   * text 1..1 MS
   * coding 1..1 MS
-  * coding from $icd-10
+  * coding from $icd-10-vs
     * system 1..1 MS
-    * system = $icd-10 (exactly)
+    * system = $icd-10-cs (exactly)
     * code 1..1 MS
     * display 1..1 MS
