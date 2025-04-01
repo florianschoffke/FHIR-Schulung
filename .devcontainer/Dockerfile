@@ -47,6 +47,11 @@ RUN wget -q https://github.com/hapifhir/org.hl7.fhir.core/releases/download/$JAV
 RUN mkdir -p /home/vscode/.fhir/settings/
 COPY codfsh-config.yaml /home/vscode/.fhir/settings/codfsh-config.yaml
 
+# Install the FHIR IG Publisher Scripts
+RUN curl -s https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main/_updatePublisher.sh -o updatePublisher.sh && \
+    chmod +x updatePublisher.sh && \
+    ./updatePublisher.sh
+
 # Setzen des Arbeitsverzeichnis
 WORKDIR /workspace
 
