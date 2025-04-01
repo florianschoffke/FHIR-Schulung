@@ -22,7 +22,7 @@
 	},
 	"mounts": [
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.fhir/packages,target=/home/vscode/.fhir/packages,type=bind"
-	]
+	],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -31,7 +31,9 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	//"postCreateCommand": "curl -s https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main/_updatePublisher.sh | sh -f"
+	"postCreateCommand": "curl -s -o /tmp/updatePublisher.sh https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main/_updatePublisher.sh && bash /tmp/updatePublisher.sh -f -y && rm /tmp/updatePublisher.sh"
+	//"postCreateCommand": "pwd && ls -l"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

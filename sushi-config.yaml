@@ -3,8 +3,12 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-canonical: http://example.org
-# title: Example Title
+canonical: http://fhir-schulung-name-gematik.de
+title: My First FHIR-IG
+id: fhir-schulung-name-gematik
+name: My Super IG
+copyrightYear: 2025
+releaseLabel: draft
 # description: Example Implementation Guide for getting started with SUSHI
 status: draft # draft | active | retired | unknown
 version: 0.1.0
@@ -33,14 +37,9 @@ dependencies:
 # with supported extensions (e.g., .md/.xml) will be treated as
 # sub-pages.
 #
-# pages:
-#   index.md:
-#     title: Example Home
-#   implementation.xml:
-#   examples.xml:
-#     title: Examples Overview
-#     simpleExamples.xml:
-#     complexExamples.xml:
+pages:
+  index.md:
+    title: Home
 #
 #
 # The parameters property represents IG.definition.parameter. Rather
@@ -65,6 +64,8 @@ dependencies:
 # │ property below.                                                                                │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
+menu:
+  Home: index.html
     
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
@@ -173,7 +174,7 @@ dependencies:
 # If set to true, no IG related content will be generated.
 # The default value for this property is false.
 #
-FSHOnly: true
+# FSHOnly: true
 #
 #
 # When set to true, the "short" and "definition" field on the root element of an Extension will

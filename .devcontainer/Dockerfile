@@ -1,12 +1,11 @@
+# Use the base image
 FROM mcr.microsoft.com/devcontainers/base:alpine-3.18
 
-# Setzen der Umgebungsvariablen
-ENV FIRELY_TERMINAL_VERSION=3.1.0
+# Set environment variables
 ENV JAVA_VALIDATOR_VERSION=6.0.11
-ENV SUSHI_VERSION=3.5.0
+ENV FIRELY_TERMINAL_VERSION=3.1.0
 
-# Installieren der notwendige Tools
-# Add Microsoft's .NET SDK repository and install .NET SDK
+# Install necessary tools
 RUN wget https://dot.net/v1/dotnet-install.sh \
     && chmod +x dotnet-install.sh \
     && ./dotnet-install.sh --channel 6.0 --install-dir /usr/share/dotnet \
@@ -22,8 +21,20 @@ RUN apk add --no-cache nodejs npm
 # Install Java (OpenJDK)
 RUN apk add --no-cache openjdk11
 
-# Install Firely Terminal as vscode user
-# Switch to the vscode user
+# Install additional dependencies
+RUN apk update && apk add --no-cache jq findutils curl ca-certificates bash
+
+# Setup for FHIR Validator
+RUN mkdir -p /home/vscode/.fhir/validators/ \
+    && wget -q https://github.com/hapifhir/org.hl7.fhir.core/releases/download/$JAVA_VALIDATOR_VERSION/validator_cli.jar -O /home/vscode/.fhir/validators/validator_cli.jar
+
+RUN mkdir -p /home/vscode/.fhir/settings/ \
+    && mkdir -p /workspace/FHIR-Schulung/
+
+# Copy configuration file
+COPY codfsh-config.yaml /home/vscode/.fhir/settings/codfsh-config.yaml
+
+# Switch to the vscode user to install Firely Terminal
 USER vscode
 
 # Install Firely Terminal
@@ -35,26 +46,14 @@ ENV PATH="/home/vscode/.dotnet/tools:${PATH}"
 # Switch back to root user to perform remaining installations
 USER root
 
-RUN npm install -g fsh-sushi@$SUSHI_VERSION
+# Install fsh-sushi globally
+RUN npm install -g fsh-sushi
 
-# Installieren der zusätzliche Abhängigkeiten
-RUN apk update && apk add --no-cache jq findutils curl ca-certificates
-
-# Setup for FHIR Validator
-RUN mkdir -p /home/vscode/.fhir/validators/
-RUN wget -q https://github.com/hapifhir/org.hl7.fhir.core/releases/download/$JAVA_VALIDATOR_VERSION/validator_cli.jar -O /home/vscode/.fhir/validators/validator_cli.jar
-
-RUN mkdir -p /home/vscode/.fhir/settings/
-COPY codfsh-config.yaml /home/vscode/.fhir/settings/codfsh-config.yaml
-
-# Install the FHIR IG Publisher Scripts
-RUN curl -s https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main/_updatePublisher.sh -o updatePublisher.sh && \
-    chmod +x updatePublisher.sh && \
-    ./updatePublisher.sh
-
-# Setzen des Arbeitsverzeichnis
+# Set working directory
 WORKDIR /workspace
 
+# Copy local files into the Docker image
 COPY . /workspace
 
-CMD [ "/bin/bash" ]
+# Set default command
+CMD [ "/bin/sh" ]
