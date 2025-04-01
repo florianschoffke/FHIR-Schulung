@@ -1,9 +1,12 @@
-# Use the base image
-FROM mcr.microsoft.com/devcontainers/base:alpine-3.18
+# Use the Debian-based image
+FROM mcr.microsoft.com/devcontainers/base:debian
 
 # Set environment variables
 ENV JAVA_VALIDATOR_VERSION=6.0.11
 ENV FIRELY_TERMINAL_VERSION=3.1.0
+
+# Update package list and install wget
+RUN apt-get update && apt-get install -y wget
 
 # Install necessary tools
 RUN wget https://dot.net/v1/dotnet-install.sh \
@@ -13,16 +16,19 @@ RUN wget https://dot.net/v1/dotnet-install.sh \
     && rm dotnet-install.sh
 
 # Install ICU libraries
-RUN apk add --no-cache icu-libs
+RUN apt-get install -y libicu-dev
 
 # Install Node.js and npm
-RUN apk add --no-cache nodejs npm
+RUN apt-get install -y nodejs npm
 
 # Install Java (OpenJDK)
-RUN apk add --no-cache openjdk11
+RUN sudo apt-get install -y default-jre
 
 # Install additional dependencies
-RUN apk update && apk add --no-cache jq findutils curl ca-certificates bash
+RUN apt-get install -y ruby ruby-dev bundler jq findutils curl ca-certificates bash fontconfig fonts-dejavu build-essential libprotobuf-dev
+
+# Install Ruby Dependencies
+RUN gem install jekyll bundler google-protobuf
 
 # Setup for FHIR Validator
 RUN mkdir -p /home/vscode/.fhir/validators/ \

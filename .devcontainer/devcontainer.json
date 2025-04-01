@@ -32,7 +32,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	//"postCreateCommand": "curl -s https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main/_updatePublisher.sh | sh -f"
-	"postCreateCommand": "curl -s -o /tmp/updatePublisher.sh https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main/_updatePublisher.sh && bash /tmp/updatePublisher.sh -f -y && rm /tmp/updatePublisher.sh"
+	"postCreateCommand": "curl -s -o /tmp/updatePublisher.sh https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main/_updatePublisher.sh && bash /tmp/updatePublisher.sh -y -f && rm /tmp/updatePublisher.sh && ./_genonce.sh"
 	//"postCreateCommand": "pwd && ls -l"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
